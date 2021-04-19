@@ -1,0 +1,25 @@
+MOV SI, 0300H
+MOV CL, 00H
+
+MOV AX, [SI]
+MOV BX, [SI+2] 
+
+ADD AL, BL  
+DAA
+
+MOV DL, AL 
+
+MOV AL, AH
+ADC AL, BH
+DAA
+
+MOV DH, AL
+
+JNC jump
+INC CL
+
+jump:
+MOV [SI+4], DX
+MOV [SI+6], CL
+
+HLT
